@@ -1,0 +1,5 @@
+{
+    "integrationFolder": "cypress/integration",
+    "viewportWidth":1300,
+    "baseUrl":"http://189.8.87.162:33801/"
+  }
