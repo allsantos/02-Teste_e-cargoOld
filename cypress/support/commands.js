@@ -30,3 +30,4 @@ Cypress.Commands.add("getIframe", (time = 0) => {
         return cy.get($body).as('iframe')
     })
 })
+
