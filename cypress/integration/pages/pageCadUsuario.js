@@ -1,6 +1,6 @@
 class pageCadUsuario {
     setCodExt(codExt) {
-        cy.get('@iframe').find("input[name='txt_Id_Sistema_Externo']").type(codExt)
+        cy.get('@iframe').find("input[name='txt_Id_Sistema_Externo']").type(codExt).should('have.value', 'cod98')
     }
     setNameFatCad(nameFatCad) {
         cy.get('@iframe').find("input[name='txt_Nome_Fantasia']").type(nameFatCad)

@@ -209,6 +209,7 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
         cy.getIframe()
         pageCadUsuario.setCodExt('cod98')
         pageCadUsuario.setNameFatCad('Signa Scot teste')
+        cy.pause()
         pageCadUsuario.setRazaoSoc('Signa teste vezes teste')
         pageCadUsuario.clickTpF()
         pageCadUsuario.clickTpJ()
@@ -256,12 +257,14 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
            const $body = $iframe.contents().find('body')
            const $win = $iframe[0].contentWindow
         
-           cy.stub('window:alert').as('windowAlert')
+           cy.stub($win, "alert").as('windowAlert')
         
            cy.wrap($body).find("input[alt='Gravar']").click().should(function () {
                expect(this.windowAlert).to.be.calledWith('A Latitude(AVL) esta incorreta deseja corrigir?')
              })
          })
+
+         
 
          /*
         cy.get('iframe').then(($iframe) => {
