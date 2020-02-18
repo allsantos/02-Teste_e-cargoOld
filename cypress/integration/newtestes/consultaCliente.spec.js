@@ -13,7 +13,7 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
         cy.location('pathname').should('eq', '/NovoIndex.asp') // Confirma para qual pagina está me enviando, após fazer login
     })   
 
-    it.skip('Consulta Usuario', () => {
+    it('Consulta Usuario', () => {
 
         cy.getIframe()
         pageConsultaCliente.clickDropDown()
@@ -51,7 +51,7 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
         cy.wait(1000),pageConsultaCliente.clickPesquisar()
         cy.wait(1000),pageConsultaCliente.clickCadastrar()
     })
-    it.skip('Cadastra Usuario', () => {
+    it('Cadastra Usuario', () => {
         cy.getIframe()
         pageConsultaCliente.clickDropDown()
         cy.wait(3000)
@@ -194,7 +194,8 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
 
        pageCadUsuario.clickGravaSave()
         })
-    it('TesteAlert', () => {
+    it.only('TesteAlert', () => {
+        cy.visit('http://189.8.87.162:33801/menuprNOVO.asp?empresa=2&grupo_empresa=1&usuario_id=1&grupo_usuario=1&usuario_login=asp.signa/center')
         cy.getIframe()
         pageConsultaCliente.clickDropDown()
         cy.wait(3000)
@@ -205,11 +206,15 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
         pageConsultaCliente.clickCadastrar()
 
         // > ---------------------IFRAME--------------------- < //
+        
+        
+
+        /*
         cy.wait(3000)
         cy.getIframe()
         pageCadUsuario.setCodExt('cod98')
         pageCadUsuario.setNameFatCad('Signa Scot teste')
-        cy.pause()
+        //cy.pause()
         pageCadUsuario.setRazaoSoc('Signa teste vezes teste')
         pageCadUsuario.clickTpF()
         pageCadUsuario.clickTpJ()
@@ -245,39 +250,32 @@ describe('Pagina Consulta e Cadastra Cliente', () => {
         pageCadUsuario.setNameFatCad('Signa Dasdwqdcvfdw asasa')
         pageCadUsuario.setLatitude('56789')
 
-        cy.getIframe()
+        cy.getIframe() */
         //pageCadUsuario.clickGravaSave()
 
         //  cy.on('window:alert', (str) => {
         //      expect(str).to.eq(`A Latitude(AVL) esta incorreta deseja corrigir?`)
         //  })
 
-        cy.wait(3000)
-         cy.get('iframe').then(($iframe) => {
-           const $body = $iframe.contents().find('body')
-           const $win = $iframe[0].contentWindow
-        
-           cy.stub($win, "alert").as('windowAlert')
-        
-           cy.wrap($body).find("input[alt='Gravar']").click().should(function () {
-               expect(this.windowAlert).to.be.calledWith('A Latitude(AVL) esta incorreta deseja corrigir?')
-             })
-         })
+        // A Latitude(AVL) esta incorreta deseja corrigir?
 
+        // cy.get('@iframe').find('window:confirm', msg => {
+        //     expect(msg).to.be.eq('A Latitude(AVL) esta incorreta deseja corrigir?')
+        //  })
+         
+        //  cy.on('window:confirm', msg => {
+        //     expect(msg).to.be.eq('A Latitude(AVL) esta incorreta deseja corrigir?')
+        // })
+
+        // const stub = cy.stub() // STUP subistitui a função e permite que controle o comportamento
+        // cy.on('window:alert', stub)
+        // cy.get('@iframe').find("input[alt='Gravar']").click().then(() => {
+        //     expect(stub.getCall(0)).to.be.calledWith('A Latitude(AVL) esta incorreta deseja corrigir?')
+        // })
          
 
-         /*
-        cy.get('iframe').then(($iframe) => {
-        const $body = $iframe.contents().find('body')
-        const $win = $iframe[0].contentWindow
-
-        cy.stub($win, 'alert').as('windowAlert')
-
-        cy.wrap($body).find('#alert').click().should(function () {
-            expect(this.windowAlert).to.be.calledWith('Hello world!')
-        })
-        */
-
+        // txt_LatitudeAVL_Exib.value != "" && ofrm.txt_LatitudeAVL
+        
 
         })
     }) 
